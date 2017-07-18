@@ -18,25 +18,38 @@ namespace MelhorCombustível
             Console.WriteLine("\nDigite o valor do litro da Gasolina:\n");
             combustiveis.ValorLitroGasolina = Convert.ToDouble(Console.ReadLine());
 
-       /*     Console.WriteLine("\nDigite o consumo médio (Km/litro) do carro com Álcool:\n");
+            Console.WriteLine("\nDigite o desempenho médio (Km/litro) do carro com Álcool:\n");
             combustiveis.ConsumoMedioAlcool = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("\nDigite o consumo médio (Km/litro) do carro com Gasolina:\n");
-            combustiveis.ConsumoMedioGasolina = Convert.ToDouble(Console.ReadLine()); */
+            Console.WriteLine("\nDigite o desempenho médio (Km/litro) do carro com Gasolina:\n");
+            combustiveis.ConsumoMedioGasolina = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("\nDigite a distância a ser percorrida (em km):\n");
+            combustiveis.DistanciaPercorrida = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("\n----------------------------------------------------------------------------");
 
+            combustiveis.CalcularConsumoAlcool();
+            combustiveis.CalcularConsumoGasolina();
+            combustiveis.CalcularEconomia();
 
-            if(combustiveis.ValorLitroCalculado >= combustiveis.ValorLitroAlcool)
+            
+            if(combustiveis.ValorTotalAlcool < combustiveis.ValorTotalGasolina)
             {
-                Console.WriteLine("\nÉ mais vantajoso abastecer com álcool, pois o valor é inferior a 70% do valor da gasolina.");
+                Console.WriteLine("\nÉ mais vantajoso abastecer com álcool.\nO valor será: R${0 :0.##}\nA economia será de R${1 :0.##}", combustiveis.ValorTotalAlcool, combustiveis.EconomiaAlcool);
             }
+            
+            else if(combustiveis.ValorTotalAlcool == combustiveis.ValorTotalGasolina)
+            {
+                Console.WriteLine("\nO valor gasto será o mesmo.\nR${0 :0.##}",combustiveis.ValorTotalAlcool);
+            }
+
             else
             {
-                Console.WriteLine("\nÉ mais vantajoso abastecer com gasolina, pois o valor do álcool é superior a 70% do seu valor.");
+                Console.WriteLine("\nÉ mais vantajoso abastecer com gasolina.\nO valor será: R${0 :0.##}\nA economia será de R${1 :0.##}", combustiveis.ValorTotalAlcool, combustiveis.EconomiaGasolina); ;
             }
-            
-            
+
+
             Console.ReadLine();
         }
     }

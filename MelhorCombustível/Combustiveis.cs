@@ -10,15 +10,32 @@ namespace MelhorCombustível
     {
         public double ValorLitroAlcool { get; set; }
         public double ValorLitroGasolina { get; set; }        
- //       public double ConsumoMedioAlcool { get; set; }
- //       public double ConsumoMedioGasolina { get; set; }
-        public double ValorLitroCalculado { get; set; }
+        public double ConsumoMedioAlcool { get; set; }
+        public double ConsumoMedioGasolina { get; set; }
+        public double DistanciaPercorrida { get; set; }
+        public double ValorTotalAlcool { get; set; }
+        public double ValorTotalGasolina { get; set; }
+        public double EconomiaAlcool { get; set; }
+        public double EconomiaGasolina { get; set; }
         
-    
-        public void CalcularVantagem()
+
+        public void CalcularEconomia()
         {
-            ValorLitroCalculado = (ValorLitroGasolina * 0.7);
+            EconomiaAlcool = (ValorTotalGasolina - ValorTotalAlcool);
+            EconomiaGasolina = (ValorTotalAlcool - ValorTotalGasolina);
+        }
+
+
+        
+        
+        public void CalcularConsumoAlcool()
+        {
+            ValorTotalAlcool = (DistanciaPercorrida / ConsumoMedioAlcool) * ValorLitroAlcool;
         }
         
+        public void CalcularConsumoGasolina()
+        {
+            ValorTotalGasolina = (DistanciaPercorrida / ConsumoMedioGasolina) * ValorLitroGasolina;
+        }
     }
 }
